@@ -485,6 +485,10 @@ body {
   animation-duration: 42s;
 }
 
+.client-row.slow .client-track {
+  animation-duration: 48s;
+}
+
 .client-marquee:hover .client-track {
   animation-play-state: paused;
 }
@@ -528,9 +532,13 @@ body {
 }
 
 .client-card img {
-  max-height: 58px;
+  display: block;
+  width: auto;
+  height: auto;
   max-width: 100%;
+  max-height: 86px;
   object-fit: contain;
+  object-position: center;
 }
 
 .client-placeholder {
@@ -919,6 +927,204 @@ footer {
 }
 
 
+    
+
+/* ===== No-gradient cleanup + homepage carousel ===== */
+.hero-bg-image,
+.blue-pattern {
+  background: #0037b8 !important;
+}
+
+.hero-bg-image .hero-bottom-fade,
+.wave-lines,
+.hero-bg-image::before,
+.hero-bg-image::after,
+.blue-pattern::before,
+.blue-pattern::after,
+.product-marquee::before,
+.product-marquee::after,
+.client-marquee::before,
+.client-marquee::after {
+  display: none !important;
+}
+
+#home > section:nth-of-type(2),
+#home > section:nth-of-type(4),
+#home > section:nth-of-type(7),
+#contact > section:nth-of-type(2) {
+  background: var(--site-paper) !important;
+}
+
+.section-title-accent::before {
+  background: var(--site-yellow) !important;
+}
+
+#home > section:not(.hero-bg-image) .rounded-\[2\.5rem\].bg-\[\#0037B8\] {
+  background: var(--site-blue) !important;
+}
+
+#home > section:not(.hero-bg-image) .rounded-\[2rem\].border,
+.client-card {
+  background: #ffffff !important;
+}
+
+#home > section:last-of-type > div,
+#products .blue-pattern,
+#contact .blue-pattern {
+  background: var(--site-blue-dark) !important;
+}
+
+.work-card::after {
+  background: rgba(0, 0, 0, 0.58) !important;
+}
+
+.work-card-placeholder {
+  position: absolute;
+  inset: 0;
+  background: #071947;
+}
+
+.work-carousel {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.work-carousel-viewport {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.work-carousel-track {
+  display: flex;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+
+.carousel-card {
+  min-width: 100%;
+  height: clamp(250px, 36vw, 430px);
+  border-radius: 24px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(0, 55, 184, 0.18);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--site-blue-dark);
+  font-weight: 900;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
+}
+
+.carousel-control:hover {
+  background: var(--site-blue);
+  color: #ffffff;
+}
+
+.carousel-control-left {
+  left: -22px;
+}
+
+.carousel-control-right {
+  right: -22px;
+}
+
+@media (max-width: 640px) {
+  .carousel-control-left {
+    left: 10px;
+  }
+
+  .carousel-control-right {
+    right: 10px;
+  }
+
+  .carousel-card {
+    height: 270px;
+  }
+}
+
+
+/* ===== FINAL IMAGE + CONTRAST FIX =====
+   Images were looking dark because .work-card::after placed a black overlay
+   above every carousel image. This final block removes that overlay and turns
+   captions into clean white labels instead of darkening the photo. */
+.work-card::after {
+  display: none !important;
+  content: none !important;
+  background: transparent !important;
+}
+
+.work-card,
+.carousel-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 55, 184, 0.12) !important;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12) !important;
+}
+
+.work-card img,
+.carousel-card img,
+#productGrid img,
+.hero-image-frame img,
+.client-card img,
+.mini-logo img {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+.work-card .badge-label {
+  left: 16px !important;
+  right: 16px !important;
+  bottom: 16px !important;
+  max-width: none !important;
+  padding: 14px 16px !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--site-blue-dark) !important;
+  text-shadow: none !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18) !important;
+}
+
+.work-card .badge-label h3,
+.work-card .badge-label p,
+.work-card .badge-label * {
+  color: var(--site-blue-dark) !important;
+  text-shadow: none !important;
+}
+
+.work-card .badge-label p:first-child {
+  color: var(--site-red) !important;
+}
+
+.work-card .badge-label p:last-child {
+  color: var(--site-muted) !important;
+}
+
+.work-card-placeholder {
+  background: #eef4ff !important;
+}
+
+.product-card-placeholder {
+  background: #eef4ff !important;
+  color: var(--site-blue) !important;
+}
+
+#productGrid article {
+  border: 1px solid rgba(0, 55, 184, 0.12) !important;
+}
+
+#productGrid img {
+  background: #f8fafc !important;
+}
+
     </style>
 
     <script>
@@ -1066,13 +1272,10 @@ footer {
                 Solusi signage rapi untuk membuat bisnis Anda terlihat lebih profesional.
               </h2>
               <p class="mt-7 max-w-2xl text-xl leading-relaxed text-slate-600">
-                Solusi signage rapi untuk membuat bisnis Anda terlihat lebih profesional. Integer
-                vitae sem sed neque luctus gravida. Duis laoreet, ipsum non
-                tincidunt feugiat, mauris lorem facilisis massa.
+                Kami membantu pembuatan neon box, huruf timbul, papan nama, dan kebutuhan signage lainnya untuk toko, kantor, restoran, serta berbagai usaha di area Depok dan Jakarta.
               </p>
               <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
-                Solusi signage rapi untuk membuat bisnis Anda terlihat lebih profesional. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Setiap pekerjaan dikerjakan dengan memperhatikan ukuran lokasi, keterbacaan tulisan, pilihan material, pencahayaan, dan hasil akhir agar tampilan bisnis terlihat rapi dari dekat maupun dari jauh.
               </p>
             </div>
 
@@ -1093,8 +1296,7 @@ footer {
                   <div>
                     <h3 class="text-xl font-black">Konsultasi Awal</h3>
                     <p class="mt-1 text-blue-100">
-                      Beberapa dokumentasi pekerjaan yang bisa dijadikan
-                      gambaran untuk kebutuhan signage Anda.
+                      Kirim referensi, ukuran perkiraan, lokasi pemasangan, dan kebutuhan usaha Anda melalui WhatsApp.
                     </p>
                   </div>
                 </div>
@@ -1106,7 +1308,7 @@ footer {
                   <div>
                     <h3 class="text-xl font-black">Rencana Desain</h3>
                     <p class="mt-1 text-blue-100">
-                      Finishing dibuat bersih agar enak dilihat dari dekat.
+                      Kami bantu menyesuaikan konsep, bahan, ukuran, dan tampilan agar sesuai dengan brand usaha.
                     </p>
                   </div>
                 </div>
@@ -1118,7 +1320,7 @@ footer {
                   <div>
                     <h3 class="text-xl font-black">Produksi & Pemasangan</h3>
                     <p class="mt-1 text-blue-100">
-                      Tampilan dibuat mudah dibaca dari jarak yang sesuai.
+                      Setelah detail disetujui, proses produksi dan pemasangan dilakukan dengan hasil rapi dan aman.
                     </p>
                   </div>
                 </div>
@@ -1169,9 +1371,30 @@ footer {
               Lihat semua contoh
             </button>
           </div>
-          <div class="product-marquee py-2">
-            <div class="marquee-track" id="homeWorkGrid"></div>
+          <div class="work-carousel" aria-label="Carousel contoh produk">
+            <button
+              id="homeCarouselPrev"
+              type="button"
+              class="carousel-control carousel-control-left"
+              aria-label="Contoh sebelumnya"
+            >
+              ←
+            </button>
+
+            <div class="work-carousel-viewport">
+              <div class="work-carousel-track" id="homeWorkGrid"></div>
+            </div>
+
+            <button
+              id="homeCarouselNext"
+              type="button"
+              class="carousel-control carousel-control-right"
+              aria-label="Contoh berikutnya"
+            >
+              →
+            </button>
           </div>
+          <div id="homeCarouselDots" class="mt-5 flex justify-center gap-2"></div>
         </div>
       </section>
 
@@ -1438,6 +1661,9 @@ footer {
             <div class="client-row reverse">
               <div id="clientGridRowTwo" class="client-track"></div>
             </div>
+            <div class="client-row slow">
+              <div id="clientGridRowThree" class="client-track"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -1535,16 +1761,21 @@ footer {
             >
           </div>
 
-          <div class="rounded-[2rem] bg-white p-8 text-slate-500 shadow-soft">
+          <div class="overflow-hidden rounded-[2rem] bg-white p-8 text-slate-500 shadow-soft">
             <h3 class="text-2xl font-black text-slate-950">Google Maps</h3>
             <p class="mt-3">
-              Tambahkan link atau embed Google Maps lokasi usaha Anda di bagian
-              ini.
+              Lokasi workshop kami di Simpang Lampu Merah PLN, Jl. Arif Rahman
+              Hakim No.3, Depok Jaya, Kecamatan Beji, Kota Depok, Jawa Barat.
             </p>
-            <div
-              class="mt-6 flex h-64 items-center justify-center rounded-3xl border border-dashed border-blue-200 bg-blue-50 font-bold text-brand"
-            >
-              AREA GOOGLE MAPS
+            <div class="mt-6 overflow-hidden rounded-3xl border border-blue-100 bg-blue-50">
+              <iframe
+                title="Lokasi Usaha"
+                class="h-64 w-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Simpang%20Lampu%20Merah%20PLN%2C%20Jl.%20Arif%20Rahman%20Hakim%20No.3%2C%20Depok%20Jaya%2C%20Kecamatan%20Beji%2C%20Kota%20Depok%2C%20Jawa%20Barat%2016421&z=16&output=embed"
+              >
+              </iframe>
             </div>
           </div>
         </div>
@@ -1576,45 +1807,45 @@ footer {
 
       // Isi contoh pekerjaan untuk marquee homepage di sini.
       const portfolio = [
-        { title: "Alur Pengerjaan", tag: "Lorem ipsum", image: "" },
-        { title: "Alur Pengerjaan", tag: "Lorem ipsum", image: "" },
-        { title: "Alur Pengerjaan", tag: "Lorem ipsum", image: "" },
-        { title: "Alur Pengerjaan", tag: "Lorem ipsum", image: "" },
-        { title: "Alur Pengerjaan", tag: "Lorem ipsum", image: "" },
-        { title: "Alur Pengerjaan", tag: "Lorem ipsum", image: "" },
+        { title: "Neon Box Outdoor", tag: "Terang, kuat, dan mudah dibaca untuk tampilan depan toko.", image: "src/attaqwa.jpeg" },
+        { title: "Papan Nama Usaha", tag: "Cocok untuk toko, kantor, klinik, restoran, dan UMKM.", image: "src/icanread.jpeg" },
+        { title: "Signage Custom", tag: "Desain, ukuran, bahan, dan finishing menyesuaikan kebutuhan lokasi.", image: "src/afcasafawswca.jpeg" },
+        { title: "Huruf Timbul", tag: "Memberikan kesan premium untuk brand dan area depan usaha.", image: "src/banteng.jpeg" },
+        { title: "Acrylic Display", tag: "Pilihan rapi untuk kebutuhan indoor, booth, dan meja pelayanan.", image: "src/unibiz.jpeg" },
+        { title: "Lightbox Promosi", tag: "Membantu promo terlihat jelas di malam hari dan area ramai.", image: "src/puskesmas.jpeg" },
       ];
 
       // Isi kartu contoh pekerjaan di halaman Contoh di sini.
       const products = [
         {
-          name: "Alur Pengerjaan",
-          description: "Lorem ipsum dolor sit amet.",
-          image: "",
+          name: "Neon Box Toko",
+          description: "Neon box custom untuk kebutuhan branding toko, restoran, klinik, kantor, dan usaha pinggir jalan.",
+          image: "src/ruellia.jpeg",
         },
         {
-          name: "Alur Pengerjaan",
-          description: "Lorem ipsum dolor sit amet.",
-          image: "",
+          name: "Papan Nama Usaha",
+          description: "Papan nama rapi dengan desain jelas agar nama usaha lebih mudah dikenali pelanggan.",
+          image: "src/unibiz.jpeg",
         },
         {
-          name: "Alur Pengerjaan",
-          description: "Lorem ipsum dolor sit amet.",
-          image: "",
+          name: "Signage Custom",
+          description: "Pembuatan signage dengan ukuran, bahan, warna, dan finishing sesuai kebutuhan lokasi.",
+          image: "src/afcasafawswca.jpeg",
         },
         {
-          name: "Alur Pengerjaan",
-          description: "Lorem ipsum dolor sit amet.",
-          image: "",
+          name: "Huruf Timbul",
+          description: "Huruf timbul acrylic, stainless, atau bahan lain untuk tampilan brand yang lebih premium.",
+          image: "src/puskesmas.jpeg",
         },
         {
-          name: "Alur Pengerjaan",
-          description: "Lorem ipsum dolor sit amet.",
-          image: "",
+          name: "Lightbox Promosi",
+          description: "Media promosi bercahaya untuk menu, promo, atau identitas toko agar terlihat lebih menonjol.",
+          image: "src/attaqwa.jpeg",
         },
         {
-          name: "Alur Pengerjaan",
-          description: "Lorem ipsum dolor sit amet.",
-          image: "",
+          name: "Acrylic & Display",
+          description: "Display acrylic dan kebutuhan visual indoor untuk meja kasir, booth, kantor, dan area pelayanan.",
+          image: "src/petshop.jpeg",
         },
       ];
 
@@ -1622,39 +1853,43 @@ footer {
         ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
         : "#";
 
-      // Isi logo pelanggan di sini.
+      // Ganti path gambar di bawah ini dengan logo/foto pelanggan asli.
       const clients = [
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
-        { name: "Alur Pengerjaan", image: "" },
+        { name: "Pelanggan 1", image: "src/pelanggan/asamarga.jpeg" },
+        { name: "Pelanggan 2", image: "src/pelanggan/bpjs.jpeg" },
+        { name: "Pelanggan 3", image: "src/pelanggan/bunda.jpeg" },
+        { name: "Pelanggan 4", image: "src/pelanggan/citra.jpeg" },
+        { name: "Pelanggan 5", image: "src/pelanggan/depok.jpeg" },
+        { name: "Pelanggan 6", image: "src/pelanggan/dumdum.jpeg" },
+        { name: "Pelanggan 7", image: "src/pelanggan/gojek.jpeg" },
+        { name: "Pelanggan 8", image: "src/pelanggan/harta.jpeg" },
+        { name: "Pelanggan 9", image: "src/pelanggan/kopdeskel.jpeg" },
+        { name: "Pelanggan 10", image: "src/pelanggan/lintau.jpeg" },
+        { name: "Pelanggan 11", image: "src/pelanggan/sederhana.jpeg" },
+        { name: "Pelanggan 12", image: "src/pelanggan/puri.jpeg" },
       ];
 
       // Isi pertanyaan dan jawaban FAQ di sini.
       const faqs = [
         {
           question: "Apakah bisa membuat desain sesuai kebutuhan usaha?",
-          answer: "Bisa. Desain, ukuran, bahan, warna, dan bentuk signage dapat disesuaikan dengan konsep usaha serta kondisi lokasi pemasangan.",
+          answer: "Ya, sangat bisa",
         },
         {
           question: "Berapa lama proses pengerjaannya?",
-          answer: "Waktu pengerjaan menyesuaikan jenis produk, ukuran, dan tingkat kerumitan desain. Estimasi akan diberikan setelah detail kebutuhan dikonfirmasi.",
+          answer: "Lama pengerjaan biasanya sekitar 3 hari - 2 minggu, tergantung besar dan banyaknya pesanan",
         },
         {
           question: "Apakah bisa konsultasi terlebih dahulu sebelum pesan?",
-          answer: "Bisa. Anda dapat menghubungi kami untuk membahas kebutuhan, referensi desain, ukuran, bahan, dan perkiraan biaya sebelum produksi dimulai.",
+          answer: "Bisa dan bebas biaya",
         },
         {
-          question: "Lorem ipsum dolor sit amet?",
-          answer: "Solusi signage rapi untuk membuat bisnis Anda terlihat lebih profesional.",
+          question: "Apakah bisa sekalian pemasangan?",
+          answer: "Ya, bisa",
         },
         {
-          question: "Lorem ipsum dolor sit amet?",
-          answer: "Solusi signage rapi untuk membuat bisnis Anda terlihat lebih profesional.",
+          question: "Apakah bisa request ukuran dan bahan tertentu?",
+          answer: "Ya bisa, dalam dan luar kota",
         },
       ];
 
@@ -1726,67 +1961,103 @@ footer {
       });
 
       const homeWorkGrid = document.getElementById("homeWorkGrid");
-      [...portfolio, ...portfolio].forEach((item) => {
-        const card = document.createElement("article");
-        card.className = "work-card marquee-card";
-        const image = item.image || "";
-        const title = item.title || "Contoh";
-        const tag = item.tag || "Signage custom untuk kebutuhan usaha";
-        card.innerHTML = `
-        ${image ? `<img src="${image}" alt="${title}">` : `<div class="absolute inset-0 bg-gradient-to-br from-[#0037B8] via-[#00247A] to-[#171717]"></div>`}
-        <div class="badge-label">
-          <p class="text-[10px] font-black uppercase tracking-[.18em] text-accent">Contoh Produk</p>
-          <h3 class="mt-1 text-sm font-black leading-tight md:text-base">${title}</h3>
-          <p class="text-[11px] font-semibold text-blue-100">${tag}</p>
-        </div>
-      `;
-        homeWorkGrid.appendChild(card);
-      });
+      const homeCarouselPrev = document.getElementById("homeCarouselPrev");
+      const homeCarouselNext = document.getElementById("homeCarouselNext");
+      const homeCarouselDots = document.getElementById("homeCarouselDots");
+      let homeCarouselIndex = 0;
+
+      function updateHomeCarousel() {
+        if (!homeWorkGrid) return;
+        homeWorkGrid.style.transform = `translateX(-${homeCarouselIndex * 100}%)`;
+
+        if (homeCarouselDots) {
+          [...homeCarouselDots.children].forEach((dot, index) => {
+            dot.classList.toggle("bg-[#0037B8]", index === homeCarouselIndex);
+            dot.classList.toggle("bg-slate-300", index !== homeCarouselIndex);
+          });
+        }
+      }
+
+      function goToHomeCarouselSlide(index) {
+        if (!portfolio.length) return;
+        homeCarouselIndex = (index + portfolio.length) % portfolio.length;
+        updateHomeCarousel();
+      }
+
+      if (homeWorkGrid) {
+        portfolio.forEach((item, index) => {
+          const card = document.createElement("article");
+          card.className = "work-card carousel-card";
+          const image = item.image || "";
+          const title = item.title || "Contoh";
+          const tag = item.tag || "Signage custom untuk kebutuhan usaha";
+          card.innerHTML = `
+          ${image ? `<img src="${image}" alt="${title}">` : `<div class="work-card-placeholder"></div>`}
+        `;
+          homeWorkGrid.appendChild(card);
+
+          if (homeCarouselDots) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "h-2.5 w-2.5 rounded-full bg-slate-300 transition";
+            dot.setAttribute("aria-label", `Tampilkan contoh ${index + 1}`);
+            dot.addEventListener("click", () => goToHomeCarouselSlide(index));
+            homeCarouselDots.appendChild(dot);
+          }
+        });
+
+        homeCarouselPrev?.addEventListener("click", () => goToHomeCarouselSlide(homeCarouselIndex - 1));
+        homeCarouselNext?.addEventListener("click", () => goToHomeCarouselSlide(homeCarouselIndex + 1));
+        updateHomeCarousel();
+      }
 
       const productGrid = document.getElementById("productGrid");
-      products.forEach((item) => {
-        const card = document.createElement("article");
-        card.className =
-          "overflow-hidden rounded-[2rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card";
-        const image = item.image || "";
-        const name = item.name || "Nama Klien";
-        const description = item.description || "Lorem ipsum dolor sit amet.";
-        card.innerHTML = `
-        ${image ? `<img class="h-64 w-full object-cover" src="${image}" alt="${name}">` : `<div class="flex h-64 w-full items-center justify-center bg-gradient-to-br from-[#EAF1FF] via-white to-[#FFF7BF] text-sm font-black text-[#0037B8]">Lorem ipsum</div>`}
-        <div class="p-6">
-          <p class="text-xs font-black uppercase tracking-[.18em] text-[#EE1C25]">Contoh Pekerjaan</p>
-          <h3 class="mt-2 text-2xl font-black text-slate-950">${name}</h3>
-          <p class="mt-3 text-slate-600">${description}</p>
-        </div>
-      `;
-        productGrid.appendChild(card);
-      });
+      if (productGrid) {
+        products.forEach((item) => {
+          const card = document.createElement("article");
+          card.className =
+            "overflow-hidden rounded-[2rem] bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-card";
+          const image = item.image || "";
+          const name = item.name || "Contoh Pekerjaan";
+          card.innerHTML = `
+            ${image ? `<img class="h-64 w-full object-cover" src="${image}" alt="${name}">` : `<div class="product-card-placeholder flex h-64 items-center justify-center text-sm font-black">Tambahkan Foto Produk</div>`}
+            <div class="p-6 text-center">
+              <p class="text-xs font-black uppercase tracking-[.18em] text-[#EE1C25]">CONTOH</p>
+            </div>
+          `;
+          productGrid.appendChild(card);
+        });
+      }
 
       function createClientCard(item) {
         const card = document.createElement("article");
         card.className = "client-card";
-        const image = item.image || "";
-        const name = item.name || "Nama Klien";
-        card.innerHTML = image
-          ? `<img src="${image}" alt="${name}">`
-          : `<div class="client-placeholder">${name}<br>Logo Klien</div>`;
+        const image = item.image || "src/pelanggan-placeholder.png";
+        const name = item.name || "Pelanggan";
+        card.innerHTML = `<img src="${image}" alt="${name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 260 100\'%3E%3Crect width=\'260\' height=\'100\' rx=\'18\' fill=\'%23eef4ff\'/%3E%3Ccircle cx=\'92\' cy=\'50\' r=\'28\' fill=\'%230037b8\' opacity=\'.9\'/%3E%3Crect x=\'126\' y=\'32\' width=\'66\' height=\'12\' rx=\'6\' fill=\'%23ffd900\'/%3E%3Crect x=\'126\' y=\'56\' width=\'42\' height=\'10\' rx=\'5\' fill=\'%23ee1c25\' opacity=\'.85\'/%3E%3C/svg%3E';">`;
         return card;
       }
 
       const clientGridRowOne = document.getElementById("clientGridRowOne");
       const clientGridRowTwo = document.getElementById("clientGridRowTwo");
+      const clientGridRowThree = document.getElementById("clientGridRowThree");
 
-      if (clientGridRowOne && clientGridRowTwo) {
-        const midpoint = Math.ceil(clients.length / 2);
-        const rowOneClients = clients.slice(0, midpoint);
-        const rowTwoClients = clients.slice(midpoint);
+      if (clientGridRowOne && clientGridRowTwo && clientGridRowThree) {
+        const rowSize = Math.ceil(clients.length / 3);
+        const rowOneClients = clients.slice(0, rowSize);
+        const rowTwoClients = clients.slice(rowSize, rowSize * 2);
+        const rowThreeClients = clients.slice(rowSize * 2);
 
-        [...rowOneClients, ...rowOneClients].forEach((item) => {
+        [...rowOneClients, ...rowOneClients, ...rowOneClients].forEach((item) => {
           clientGridRowOne.appendChild(createClientCard(item));
         });
 
-        [...rowTwoClients, ...rowTwoClients].forEach((item) => {
+        [...rowTwoClients, ...rowTwoClients, ...rowTwoClients].forEach((item) => {
           clientGridRowTwo.appendChild(createClientCard(item));
+        });
+
+        [...rowThreeClients, ...rowThreeClients, ...rowThreeClients].forEach((item) => {
+          clientGridRowThree.appendChild(createClientCard(item));
         });
       }
 
